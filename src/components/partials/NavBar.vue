@@ -19,10 +19,11 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Inicio</a></li>
-          <li class=""><a href="#">Cursos</a></li>
-          <li class=""><a href="#">Eventos</a></li>
-          <li class=""><a href="#">Historia</a></li>
+
+          <li v-bind:class="{ 'active': $route.fullPath === '/' }" ><router-link to="/">Inicio</router-link></li>
+          <li v-bind:class="{ 'active': $route.fullPath === '/cursos' }"><router-link to="/cursos">Cursos</router-link></li>
+          <li v-bind:class="{ 'active': $route.fullPath === '/eventos' }"><router-link to="/eventos">Eventos</router-link></li>
+          <li v-bind:class="{ 'active': $route.fullPath === '/nosotros' }"><router-link to="/nosotros">Nosotros</router-link></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->

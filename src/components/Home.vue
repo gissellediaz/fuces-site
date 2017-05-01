@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="">
-    <nav-bar></nav-bar>
     <hero></hero>
     <div class="container">
       <div class="row">
@@ -26,7 +25,6 @@
         </div>
       </div>
     </div>
-    <footer-app> </footer-app>
 
   </div>
 </template>
