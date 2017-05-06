@@ -9,7 +9,7 @@
               <input type="text" class="form-control input-md b-r-0" aria-describedby="inputSuccess2Status">
               <span class="glyphicon glyphicon-search form-control-feedback text-primary" aria-hidden="true"></span>
             </div>
-            <p class="text-center m-t-md">Cumaná | Fundacion Conciencia Ecosocial</p>
+            <p class="text-center m-t-md">Cumaná | Fundación Conciencia Ecosocial</p>
           </div>
         </div>
       </div>
