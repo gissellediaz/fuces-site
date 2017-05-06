@@ -24,6 +24,7 @@ export default {
 <style lang="scss">
   @import 'src/assets/css/main';
   .content-fuces {
-    min-height: calc(100vh - 98px)
+    margin-top: 70px;
+    min-height: calc(100vh - 98px - 70px)
   }
 </style>
