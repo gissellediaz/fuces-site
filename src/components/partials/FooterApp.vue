@@ -23,7 +23,7 @@
       <hr>
       <div class="row">
         <div class="col-md-12">
-          <p class="text-center"><i class="fa fa-copyright" aria-hidden="true"></i> Fundacion Conciencia Ecosocial 2017</p>
+          <p class="text-center"><i class="fa fa-copyright" aria-hidden="true"></i> Fundación Conciencia Ecosocial 2017</p>
         </div>
       </div>
     </div>
