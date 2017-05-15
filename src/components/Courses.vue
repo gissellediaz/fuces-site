@@ -3,7 +3,7 @@
     <div class="hero">
       <div class="img-hero" alt="">
         <div class="container">
-          <h3 class="text-center">Tenemos una variedad de cursos para ti</h3>
+          <h2 class="text-center">¡Tenemos gran variedad de cursos para ti! <br> Llena el formulario de inscripción y reserva tu cupo.</h2>
         </div>
       </div>
     </div>

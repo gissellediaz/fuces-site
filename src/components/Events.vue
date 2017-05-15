@@ -3,7 +3,7 @@
     <div class="hero">
       <div class="img-hero" alt="">
         <div class="container">
-          <h3 class="text-center">Nuestras actividades</h3>
+          <h2 class="text-center">¡Nos actualizamos constantemente! <br> No te pierdas cada detalle.</h2>
         </div>
       </div>
     </div>
