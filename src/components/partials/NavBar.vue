@@ -44,8 +44,8 @@ export default {
     .navbar-brand-txt {
       margin-top: 8px;
       padding-left: 0px;
-      font-size: 1.8em;
       margin-left: 2px !important;
+      font-size: 1.2em;
     }
     .active a {
       border-bottom: 3px #5dc83d solid;

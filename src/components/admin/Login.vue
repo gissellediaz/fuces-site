@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .login-conent {
+  .login-content {
     .form-signin {
         max-width: 330px;
         padding: 15px;
