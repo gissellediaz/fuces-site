@@ -12,7 +12,7 @@
           <img class="img-responsive logo-img" src="../../assets/images/logo.png" alt="">
         </a>
         <a class="navbar-brand navbar-brand-txt" href="#">
-          <span class="">Fuces</span>
+          <span class="">Fundación Conciencia Ecosocial</span>
         </a>
       </div>
 

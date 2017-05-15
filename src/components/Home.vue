@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-sm-12">
-          <h3>Cursos Populares</h3>
+          <h3>Cursos</h3>
           <hr>
         </div>
         <div class="col-md-8">
@@ -26,7 +26,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <h3>Ultimos eventos</h3>
+              <h3>Últimos Eventos</h3>
               <hr>
               <div class="row">
                 <div class="col-md-12" v-for="n in 2">
