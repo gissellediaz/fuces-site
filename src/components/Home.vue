@@ -51,7 +51,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <h4>Misión</h4>
-              <p>Promover la educación ambiental en todos los niveles educativos y comunitarios, a través de programas y proyectos de desarrollo sustentable de los recursos natrales...</p>
+              <p>Promover la educación ambiental en todos los niveles educativos y comunitarios, a través de programas y proyectos de desarrollo sustentable de los recursos naturales...</p>
               <a href="#">Seguir leyendo</a>
             </div>
           </div>
