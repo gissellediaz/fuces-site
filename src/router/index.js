@@ -5,6 +5,7 @@ import Events from '@/components/site/Events'
 import Home from '@/components/site/Home'
 import Login from '@/components/admin/Login'
 import Site from '@/components/site/Site'
+import AboutUs from '@/components/site/AboutUs'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
           path: '/eventos',
           name: 'Events',
           component: Events
+        },
+        {
+          path: '/nosotros',
+          name: 'AboutUs',
+          component: AboutUs
         }
       ]
     },
