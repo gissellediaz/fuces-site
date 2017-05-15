@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Courses from '@/components/Courses'
 import Events from '@/components/Events'
+import Login from '@/components/admin/Login'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/eventos',
       name: 'Events',
       component: Events
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })
