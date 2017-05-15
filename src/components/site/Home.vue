@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <hero></hero>
-    <div class="container">
+    <div class="container animated fadeInUp">
       <div class="row">
         <div class="col-md-12 col-sm-12">
           <h3>Cursos</h3>
@@ -10,7 +10,7 @@
         <div class="col-md-8">
           <div class="row">
             <div class="col-sm-12 col-md-6" v-for="n in 4">
-              <div class="thumbnail card animated fadeInUp">
+              <div class="thumbnail card">
                 <div class="img-card"></div>
                 <div class="caption card-content">
                   <h5><strong>El arte de reciclar</strong></h5>
@@ -30,7 +30,7 @@
               <hr>
               <div class="row">
                 <div class="col-md-12" v-for="n in 2">
-                  <div class="thumbnail card animated fadeInUp">
+                  <div class="thumbnail card">
                     <div class="img-card"></div>
                     <div class="caption card-content">
                       <h5><strong>El arte de reciclar</strong></h5>
@@ -103,7 +103,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Inscribirse</button>
+            <button type="button" class="btn btn-primary" v-on:click="showToast">Inscribirse</button>
           </div>
         </div>
       </div>
@@ -112,14 +112,21 @@
 </template>
 
 <script>
-import NavBar from '@/components/partials/NavBar'
-import Hero from '@/components/partials/Hero'
-import FooterApp from '@/components/partials/FooterApp'
+import NavBar from '@/components/site/partials/NavBar'
+import Hero from '@/components/site/partials/Hero'
+import FooterApp from '@/components/site/partials/FooterApp'
 export default {
   components: {
     NavBar,
     Hero,
     FooterApp
+  },
+  methods: {
+    showToast () {
+      console.log('asad')
+      window.$('#myModal').modal('hide')
+      window.$toast.success('Ha reservado su cupo')
+    }
   }
 }
 </script>
@@ -131,7 +138,7 @@ export default {
     border-radius: 0px;
     height: 400px;
     .img-card {
-      background-image: url("../assets/images/w1.jpg");
+      background-image: url("../../assets/images/w1.jpg");
       background-position: center;
       background-size: contain;
       height: 120px;

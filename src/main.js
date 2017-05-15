@@ -7,6 +7,7 @@ import router from './router'
 Vue.config.productionTip = false
 // ===== Bootstrap components integration (JQuery needed) ======
 window.$ = window.jQuery = require('jquery')
+window.$toast = require('toastr')
 require('bootstrap-sass')
 
 /* eslint-disable no-new */

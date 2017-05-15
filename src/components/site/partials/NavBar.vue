@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand navbar-brand-logo" href="#">
-          <img class="img-responsive logo-img" src="../../assets/images/logo.png" alt="">
+          <img class="img-responsive logo-img" src="../../../assets/images/logo.png" alt="">
         </a>
         <a class="navbar-brand navbar-brand-txt" href="#">
           <span class="">Fundación Conciencia Ecosocial</span>

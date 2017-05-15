@@ -2,7 +2,7 @@
   <div class="login-content">
     <div class="container">
       <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
+        <div class="col-sm-6 col-md-4 col-md-offset-4 login-box">
           <h1 class="text-center login-title">Bienvenido</h1>
           <div class="account-wall">
             <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">
@@ -10,13 +10,11 @@
                 <input type="text" class="form-control" placeholder="Email" required autofocus>
                 <input type="password" class="form-control" placeholder="Contraseña" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
-                <label class="checkbox pull-left">
+                <label class="checkbox m-l-20">
                   <input type="checkbox" value="remember-me">Recuérdame
                 </label>
-                <a href="#" class="pull-right need-help">Ayuda</a><span class="clearfix"></span>
               </form>
           </div>
-          <a href="#" class="text-center new-account">Crear nueva cuenta </a>
         </div>
       </div>
     </div>
@@ -30,6 +28,16 @@ export default {
 
 <style lang="scss">
   .login-content {
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    .login-box{
+      padding-bottom: 75px;
+    }
+    .m-l-20 {
+      margin-left: 20px;
+    }
     .form-signin {
         max-width: 330px;
         padding: 15px;

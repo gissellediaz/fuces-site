@@ -66,7 +66,7 @@ export default {
       margin-top: 70px;
       height: 330px;
       background-color: black;
-      background-image: url("../assets/images/courses.jpg");
+      background-image: url("../../assets/images/courses.jpg");
       background-position: center;
       background-repeat: no-repeat;
       .img-hero {
