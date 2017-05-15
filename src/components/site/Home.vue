@@ -4,12 +4,12 @@
     <div class="container animated fadeInUp">
       <div class="row">
         <div class="col-md-12 col-sm-12">
-          <h3>Cursos</h3>
+          <h3>Últimos Eventos</h3>
           <hr>
         </div>
         <div class="col-md-8">
           <div class="row">
-            <div class="col-sm-12 col-md-6" v-for="n in 4">
+            <div class="col-md-12" v-for="n in 2">
               <div class="thumbnail card">
                 <div class="img-card"></div>
                 <div class="caption card-content">
@@ -19,17 +19,17 @@
                   <br>
                   <span><strong>Instructor:</strong> Lcdo. Carlos Luna</span>
                   <hr>
-                  <a href="#" class="btn btn-primary pull-right" role="button" data-toggle="modal" data-target="#myModal">Inscribirse</a>
+                  <a href="#" class="btn btn-primary pull-right" role="button">Ver más</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <h3>Últimos Eventos</h3>
+              <h3>Cursos</h3>
               <hr>
               <div class="row">
-                <div class="col-md-12" v-for="n in 2">
+                <div class="col-sm-12 col-md-6" v-for="n in 4">
                   <div class="thumbnail card">
                     <div class="img-card"></div>
                     <div class="caption card-content">
@@ -39,7 +39,7 @@
                       <br>
                       <span><strong>Instructor:</strong> Lcdo. Carlos Luna</span>
                       <hr>
-                      <a href="#" class="btn btn-primary pull-right" role="button">Ver más</a>
+                      <a href="#" class="btn btn-primary pull-right" role="button" data-toggle="modal" data-target="#myModal">Inscribirse</a>
                     </div>
                   </div>
                 </div>
