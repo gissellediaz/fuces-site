@@ -85,9 +85,10 @@ export default {
       margin-top: 70px;
       height: 330px;
       background-color: black;
-      background-image: url("../../assets/images/events.jpg");
+      background-image: url("../../assets/images/wallpaper-3.jpg");
       background-position: center;
       background-repeat: no-repeat;
+      background-size: cover;
       .img-hero {
         display: flex;
         justify-content: center;

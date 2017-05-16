@@ -4,10 +4,11 @@
       <div class="row m-t-md">
         <div class="col-md-6">
           <ul class="links">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Cursos</a></li>
-            <li><a href="#">Eventos</a></li>
-            <li><a href="#">Nosotros</a></li>
+            <li v-bind:class="{ 'active': $route.fullPath === '/' }" ><router-link to="/">Inicio</router-link></li>
+            <li v-bind:class="{ 'active': $route.fullPath === '/cursos' }"><router-link to="/cursos">Cursos</router-link></li>
+            <li v-bind:class="{ 'active': $route.fullPath === '/eventos' }"><router-link to="/eventos">Eventos</router-link></li>
+            <li v-bind:class="{ 'active': $route.fullPath === '/nosotros' }"><router-link to="/nosotros">Nosotros</router-link></li>
+            <li v-bind:class="{ 'active': $route.fullPath === '/contacto' }"><router-link to="/contacto">Contacto</router-link></li>
           </ul>
         </div>
         <div class="col-md-6">

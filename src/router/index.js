@@ -6,6 +6,7 @@ import Home from '@/components/site/Home'
 import Login from '@/components/admin/Login'
 import Site from '@/components/site/Site'
 import AboutUs from '@/components/site/AboutUs'
+import Contact from '@/components/site/Contact'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
           path: '/nosotros',
           name: 'AboutUs',
           component: AboutUs
+        },
+        {
+          path: '/contacto',
+          name: 'Contact',
+          component: Contact
         }
       ]
     },

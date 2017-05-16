@@ -23,6 +23,7 @@
           <li v-bind:class="{ 'active': $route.fullPath === '/cursos' }"><router-link to="/cursos">Cursos</router-link></li>
           <li v-bind:class="{ 'active': $route.fullPath === '/eventos' }"><router-link to="/eventos">Eventos</router-link></li>
           <li v-bind:class="{ 'active': $route.fullPath === '/nosotros' }"><router-link to="/nosotros">Nosotros</router-link></li>
+          <li v-bind:class="{ 'active': $route.fullPath === '/contacto' }"><router-link to="/contacto">Contacto</router-link></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
