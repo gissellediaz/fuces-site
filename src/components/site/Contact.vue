@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <div class="container m-t-xl m-b-xl">
+    <div class="container m-t-xl m-b-xl animated fadeInUp">
       <div class="row">
         <div class="col-md-6">
           <div class="form-area">

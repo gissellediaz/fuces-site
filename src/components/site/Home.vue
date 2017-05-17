@@ -52,14 +52,14 @@
             <div class="panel-body">
               <h4>Misión</h4>
               <p>Promover la educación ambiental en todos los niveles educativos y comunitarios, a través de programas y proyectos de desarrollo sustentable de los recursos naturales...</p>
-              <a href="#">Seguir leyendo</a>
+              <router-link to="/nosotros">Seguir leyendo</router-link>
             </div>
           </div>
           <div class="panel panel-default">
             <div class="panel-body">
               <h4>Visión</h4>
               <p>Dirigir su acción a la protección y conservación de nuestro ambiente, la promoción del desarrollo sustentable de los recursos naturales de nuestro estado Sucre...</p>
-              <a href="#">Seguir leyendo</a>
+              <router-link to="/nosotros">Seguir leyendo</router-link>
             </div>
           </div>
           <div class="panel panel-default">
