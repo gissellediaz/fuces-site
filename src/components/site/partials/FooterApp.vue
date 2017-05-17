@@ -13,11 +13,10 @@
         </div>
         <div class="col-md-6">
           <ul class="social">
-            <li><i class="fa fa-envelope" aria-hidden="true"></i> fuces@gmail.com</li>
-            <li><i class="fa fa-phone" aria-hidden="true"></i> 0293-45112345</li>
-            <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
-            <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
-            <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
+            <li><i class="fa fa-envelope" aria-hidden="true"></i> fundaconcienciaecosocial@outlook.com</li>
+            <li><i class="fa fa-phone" aria-hidden="true"></i> +584149993620</li>
+            <li><a href="https://www.facebook.com/profile.php?id=100009200676561" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="https://twitter.com/fundaecosocial1" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
           </ul>
         </div>
       </div>
