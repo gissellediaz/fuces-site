@@ -1,49 +1,16 @@
 <template lang="html">
   <div class="">
-    <hero></hero>
+    <carousel></carousel>
     <div class="container animated fadeInUp">
       <div class="row">
         <div class="col-md-12 col-sm-12">
-          <h3>Últimos Eventos</h3>
+          <h3>Proximos Eventos</h3>
           <hr>
         </div>
         <div class="col-md-8">
           <div class="row">
-            <div class="col-md-12" v-for="n in 2">
-              <div class="thumbnail card">
-                <div class="img-card"></div>
-                <div class="caption card-content">
-                  <h5><strong>El arte de reciclar</strong></h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <span><strong>Horas:</strong> 60</span>
-                  <br>
-                  <span><strong>Instructor:</strong> Lcdo. Carlos Luna</span>
-                  <hr>
-                  <a href="#" class="btn btn-primary pull-right" role="button">Ver más</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <h3>Cursos</h3>
-              <hr>
-              <div class="row">
-                <div class="col-sm-12 col-md-6" v-for="n in 4">
-                  <div class="thumbnail card">
-                    <div class="img-card"></div>
-                    <div class="caption card-content">
-                      <h5><strong>El arte de reciclar</strong></h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                      <span><strong>Horas:</strong> 60</span>
-                      <br>
-                      <span><strong>Instructor:</strong> Lcdo. Carlos Luna</span>
-                      <hr>
-                      <a href="#" class="btn btn-primary pull-right" role="button" data-toggle="modal" data-target="#myModal">Inscribirse</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="col-md-12" v-for="(item, index) in events">
+              <card v-bind:item="item" type="eventos"></card>
             </div>
           </div>
         </div>
@@ -78,73 +45,48 @@
         </div>
       </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Formulario de Inscripción</h4>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="name">Nombres:</label>
-              <input type="text" class="form-control" id="name">
-            </div>
-            <div class="form-group">
-              <label for="email">Correo Electrónico:</label>
-              <input type="email" class="form-control" id="email">
-            </div>
-            <div class="form-group">
-              <label for="phone">Teléfono:</label>
-              <input type="text" class="form-control" id="phone">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" v-on:click="showToast">Inscribirse</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/site/partials/NavBar'
-import Hero from '@/components/site/partials/Hero'
+import Carousel from '@/components/site/partials/Carousel'
 import FooterApp from '@/components/site/partials/FooterApp'
+import Card from '@/components/site/partials/Card'
 export default {
   components: {
     NavBar,
-    Hero,
-    FooterApp
+    Carousel,
+    FooterApp,
+    Card
   },
-  methods: {
-    showToast () {
-      console.log('asad')
-      window.$('#myModal').modal('hide')
-      window.$toast.success('Ha reservado su cupo')
+  data () {
+    return {
+      events: [
+        {
+          title: 'Dia mundial de la playas 2017',
+          subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          slug: 'dia-mundial-de-la-playa-2017',
+          image: 'http://www.publicdomainpictures.net/pictures/150000/velka/tropical-beach-1454007190ZAK.jpg'
+        },
+        {
+          title: 'Creando conciencia en las escuelas',
+          subtitle: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          slug: 'creando-conciencia-en-las-escuelas',
+          image: 'http://www.fondox.net/wallpapers/un-valle-natural-1136.jpg'
+        },
+        {
+          title: 'Tittle 3',
+          subtitle: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+          slug: 'title-3',
+          image: 'http://k39.kn3.net/taringa/2/4/3/0/6/6/13/soyluuchoox/1A4.jpg?8548'
+        }
+      ]
     }
   }
 }
 </script>
 
 <style lang="scss">
-  .card {
-    padding: 0px;
-    background-color: white;
-    border-radius: 0px;
-    height: 400px;
-    .img-card {
-      background-image: url("../../assets/images/w1.jpg");
-      background-position: center;
-      background-size: contain;
-      height: 120px;
-    }
-    .card-content {
-      margin: 10px;
-    }
-  }
+
 </style>
