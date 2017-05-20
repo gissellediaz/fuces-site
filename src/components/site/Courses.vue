@@ -18,32 +18,8 @@
         </div>
       </div>
       <div class="row courses">
-        <div class="col-sm-12 col-md-6" v-for="n in 8">
-          <div class="thumbnail card animated fadeInUp">
-            <div class="img-card"></div>
-            <div class="caption card-content">
-              <h5><strong>El arte de reciclar</strong></h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <span><strong>Horas:</strong> 60</span>
-              <br>
-              <span><strong>Instructor:</strong> Lcdo. Carlos Luna</span>
-              <hr>
-              <a href="#" class="btn btn-primary pull-right" role="button" data-toggle="modal" data-target="#myModal">Inscribirse</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 courses-pagination">
-          <nav aria-label="">
-            <ul class="pagination">
-              <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-              <li class=""><a href="#">2 <span class="sr-only">(current)</span></a></li>
-              <li class=""><a href="#">3 <span class="sr-only">(current)</span></a></li>
-              <li class=""><a href="#">4 <span class="sr-only">(current)</span></a></li>
-            </ul>
-          </nav>
+        <div class="col-sm-12 col-md-6" v-for="course in courses">
+          <card-course v-bind:course="course"></card-course>
         </div>
       </div>
     </div>
@@ -51,7 +27,26 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import CardCourse from '@/components/site/partials/CardCourse'
+
 export default {
+  components: {
+    CardCourse
+  },
+  computed: {
+    ...mapGetters({
+      courses: 'getAllCourses'
+    })
+  },
+  beforeMount () {
+    this.getAllCourses()
+  },
+  methods: {
+    ...mapActions([
+      'getAllCourses'
+    ])
+  }
 }
 </script>
 

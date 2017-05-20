@@ -9,8 +9,8 @@
         </div>
         <div class="col-md-8">
           <div class="row">
-            <div class="col-md-12" v-for="(item, index) in events">
-              <card v-bind:item="item" type="eventos"></card>
+            <div class="col-md-12" v-for="(event, index) in events">
+              <card-event v-bind:event="event"></card-event>
             </div>
           </div>
         </div>
@@ -52,13 +52,13 @@
 import NavBar from '@/components/site/partials/NavBar'
 import Carousel from '@/components/site/partials/Carousel'
 import FooterApp from '@/components/site/partials/FooterApp'
-import Card from '@/components/site/partials/Card'
+import CardEvent from '@/components/site/partials/CardEvent'
 export default {
   components: {
     NavBar,
     Carousel,
     FooterApp,
-    Card
+    CardEvent
   },
   data () {
     return {

@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="thumbnail card">
-    <div class="img-card" v-bind:style="{backgroundImage: 'url('+item.image+')'}"></div>
+    <div class="img-card" v-bind:style="{backgroundImage: 'url('+event.image+')'}"></div>
     <div class="caption card-content">
       <div class="">
-        <h5><strong>{{item.title}}</strong></h5>
-        <p>{{item.subtitle}}</p>
+        <h5><strong>{{event.title}}</strong></h5>
+        <p>{{event.subtitle}}</p>
       </div>
       <div class="">
         <hr>
-        <router-link class="btn btn-primary pull-right" v-bind:to="type+'/'+item.slug">Seguir leyendo</router-link>
+        <router-link class="btn btn-primary pull-right" v-bind:to="'eventos/'+event.slug">Seguir leyendo</router-link>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ['item', 'type']
+  props: ['event']
 }
 </script>
 
