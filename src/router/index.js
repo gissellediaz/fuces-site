@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Courses from '@/components/site/Courses'
+import Course from '@/components/site/Course'
 import Events from '@/components/site/Events'
 import Home from '@/components/site/Home'
 import Login from '@/components/admin/Login'
@@ -26,6 +27,11 @@ export default new Router({
           path: '/cursos',
           name: 'Courses',
           component: Courses
+        },
+        {
+          path: '/cursos/:slug',
+          name: 'Course',
+          component: Course
         },
         {
           path: '/eventos',

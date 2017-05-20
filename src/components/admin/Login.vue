@@ -9,7 +9,7 @@
               <form class="form-signin">
                 <input type="text" class="form-control" placeholder="Email" required autofocus>
                 <input type="password" class="form-control" placeholder="Contraseña" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
+                <button class="btn btn-md btn-primary btn-block" type="submit">Iniciar Sesión</button>
                 <label class="checkbox m-l-20">
                   <input type="checkbox" value="remember-me">Recuérdame
                 </label>

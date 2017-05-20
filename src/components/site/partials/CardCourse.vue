@@ -8,7 +8,7 @@
       <br>
       <span><strong>Instructor:</strong> {{course.instructor}}</span>
       <hr>
-      <a href="#" class="btn btn-primary pull-right" role="button" data-toggle="modal" data-target="#myModal">Inscribirse</a>
+      <router-link class="btn btn-primary pull-right" v-bind:to="'cursos/'+course.slug">Seguir leyendo</router-link>
     </div>
   </div>
 </template>

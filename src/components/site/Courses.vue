@@ -12,8 +12,9 @@
         <div class="col-md-6 col-sm-8 col-xs-10">
           <h4 class="text-center">Encuentra tu curso</h4>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control input-md b-r-0" aria-describedby="inputSuccess2Status">
-            <span class="glyphicon glyphicon-search form-control-feedback text-primary" aria-hidden="true"></span>
+            <input v-model="search" v-on:keyup="searchCourse" type="text" class="form-control input-md b-r-0" aria-describedby="inputSuccess2Status">
+            <span v-if="!loading" class="glyphicon glyphicon-search form-control-feedback text-primary" aria-hidden="true"></span>
+            <i v-else class="fa fa-spin fa-spinner form-control-feedback text-primary"></i>
           </div>
         </div>
       </div>
@@ -22,6 +23,9 @@
           <card-course v-bind:course="course"></card-course>
         </div>
       </div>
+    </div>
+    <div class="container m-b-md" v-if="!max">
+      <button id="btn-more" type="button" v-on:click="showMore" class="btn btn-primary btn-block">Mas cursos</button>
     </div>
   </div>
 </template>
@@ -34,18 +38,59 @@ export default {
   components: {
     CardCourse
   },
+  data () {
+    return {
+      search: '',
+      loading: false,
+      max: false
+    }
+  },
   computed: {
     ...mapGetters({
       courses: 'getAllCourses'
-    })
+    }),
+    course () {
+      return this.$store.getters.getCourseBySlug('abono-organico')
+    }
   },
   beforeMount () {
     this.getAllCourses()
   },
   methods: {
     ...mapActions([
-      'getAllCourses'
-    ])
+      'getAllCourses',
+      'findCourses',
+      'moreCourses'
+    ]),
+    searchCourse () {
+      if (this.search !== '') {
+        this.max = true
+      } else {
+        this.max = false
+      }
+      this.loading = true
+      this.findCourses(this.search)
+      .then(() => {
+        this.loading = false
+      })
+      .catch(() => {
+        this.loading = false
+      })
+    },
+    showMore () {
+      window.$('#btn-more').button('loading')
+      this.moreCourses(this.courses.length)
+      .then(courses => {
+        if (courses.length === 0 || courses.length < 6) {
+          this.max = true
+        }
+        window.$('#btn-more').button('reset')
+      })
+      .catch(error => {
+        window.$('#btn-more').button('reset')
+        console.log(error)
+      })
+    }
   }
 }
 </script>

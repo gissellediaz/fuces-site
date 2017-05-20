@@ -2,7 +2,8 @@ import * as getters from './getters'
 import * as actions from './actions'
 
 import {
-  ALLCOURSES
+  ALLCOURSES,
+  ADDCOURSES
 } from './mutation-types'
 
 const initialState = {
@@ -13,6 +14,12 @@ const initialState = {
 const mutations = {
   [ALLCOURSES] (state, courses) {
     state.courses = courses
+  },
+  [ADDCOURSES] (state, courses) {
+    state.courses = [
+      ...state.courses,
+      ...courses
+    ]
   }
 }
 
