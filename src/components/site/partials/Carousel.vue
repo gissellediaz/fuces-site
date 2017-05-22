@@ -2,16 +2,16 @@
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" v-bind:class="[ index==0 ? 'active' : '']" v-for="(slide, index) in slides"></li>
+      <li data-target="#myCarousel" v-bind:class="[ index==0 ? 'active' : '']" v-bind:data-slide-to="index" v-for="(slide, index) in carousel"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-      <div class="item img-background" v-bind:class="[ index==0 ? 'active' : '']"  v-bind:style="{backgroundImage: 'url('+slide.image+')'}" v-for="(slide, index) in slides">
+      <div class="item img-background" v-bind:class="[ index==0 ? 'active' : '']"  v-bind:style="{backgroundImage: 'url('+slide.image+')'}" v-for="(slide, index) in carousel">
         <div class="img-layer">
           <div class="container">
             <div class="carousel-caption">
               <h1>{{ slide.title }}</h1>
               <p>{{ slide.subtitle }}</p>
-              <p><router-link class="btn btn-lg btn-primary" v-bind:to="'eventos/'+slide.slug">Seguir leyendo</router-link></p>
+              <p><router-link class="btn btn-md btn-primary" v-bind:to="'eventos/'+slide.slug">Seguir leyendo</router-link></p>
             </div>
           </div>
         </div>
@@ -29,29 +29,25 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
+  computed: {
+    ...mapGetters({
+      carousel: 'getEventsInCarousel'
+    })
+  },
+  methods: {
+    ...mapActions([
+      'getEventsInCarousel'
+    ])
+  },
+  beforeMount () {
+    this.getEventsInCarousel()
+  },
   data () {
     return {
-      slides: [
-        {
-          title: 'Dia mundial de la playas 2017',
-          subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-          slug: 'dia-mundial-de-la-playa-2017',
-          image: 'http://www.publicdomainpictures.net/pictures/150000/velka/tropical-beach-1454007190ZAK.jpg'
-        },
-        {
-          title: 'Creando conciencia en las escuelas',
-          subtitle: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          slug: 'creando-conciencia-en-las-escuelas',
-          image: 'http://www.fondox.net/wallpapers/un-valle-natural-1136.jpg'
-        },
-        {
-          title: 'Tittle 3',
-          subtitle: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-          slug: 'title-3',
-          image: 'http://k39.kn3.net/taringa/2/4/3/0/6/6/13/soyluuchoox/1A4.jpg?8548'
-        }
-      ]
+
     }
   }
 }
@@ -86,6 +82,7 @@ export default {
     background-image: url("../../../assets/images/wallpaper-3.jpg");
     background-position: center;
     background-repeat: no-repeat;
+    background-size:cover;
     .img-layer {
       display: flex;
       justify-content: center;

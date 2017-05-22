@@ -3,11 +3,13 @@ import * as actions from './actions'
 
 import {
   ALLEVENTS,
-  ADDEVENT
+  ADDEVENT,
+  CAROUSEL
 } from './mutation-types'
 
 const initialState = {
-  events: []
+  events: [],
+  carousel: []
 }
 
 // mutations
@@ -17,6 +19,9 @@ const mutations = {
   },
   [ADDEVENT] (state, event) {
     state.events.push(event)
+  },
+  [CAROUSEL] (state, events) {
+    state.carousel = events
   }
 }
 

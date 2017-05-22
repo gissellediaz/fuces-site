@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-8">
           <div class="row">
-            <div class="col-md-12" v-for="(event, index) in events">
+            <div class="col-md-6" v-for="(event, index) in events">
               <card-event v-bind:event="event"></card-event>
             </div>
           </div>
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import NavBar from '@/components/site/partials/NavBar'
 import Carousel from '@/components/site/partials/Carousel'
 import FooterApp from '@/components/site/partials/FooterApp'
@@ -60,12 +61,35 @@ export default {
     FooterApp,
     CardEvent
   },
+  computed: {
+    ...mapGetters({
+      carousel: 'getEventsInCarousel'
+    })
+  },
   data () {
     return {
       events: [
         {
           title: 'Dia mundial de la playas 2017',
-          subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          slug: 'dia-mundial-de-la-playa-2017',
+          image: 'http://www.publicdomainpictures.net/pictures/150000/velka/tropical-beach-1454007190ZAK.jpg'
+        },
+        {
+          title: 'Creando conciencia en las escuelas',
+          subtitle: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          slug: 'creando-conciencia-en-las-escuelas',
+          image: 'http://www.fondox.net/wallpapers/un-valle-natural-1136.jpg'
+        },
+        {
+          title: 'Tittle 3',
+          subtitle: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+          slug: 'title-3',
+          image: 'http://k39.kn3.net/taringa/2/4/3/0/6/6/13/soyluuchoox/1A4.jpg?8548'
+        },
+        {
+          title: 'Dia mundial de la playas 2017',
+          subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
           slug: 'dia-mundial-de-la-playa-2017',
           image: 'http://www.publicdomainpictures.net/pictures/150000/velka/tropical-beach-1454007190ZAK.jpg'
         },

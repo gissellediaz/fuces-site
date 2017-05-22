@@ -4,7 +4,7 @@
     <div class="caption card-content">
       <div class="">
         <h5><strong>{{event.title}}</strong></h5>
-        <p>{{event.subtitle}}</p>
+        <p class="content-event">{{shortText(event.subtitle)}}</p>
       </div>
       <div class="">
         <hr>
@@ -16,7 +16,15 @@
 
 <script>
 export default {
-  props: ['event']
+  props: ['event'],
+  methods: {
+    shortText (text) {
+      if (text.length > 120) {
+        return text.substring(0, 120) + '...'
+      }
+      return text
+    }
+  }
 }
 </script>
 
@@ -35,6 +43,10 @@ export default {
     }
     .card-content {
       margin: 10px;
+    }
+    .content-event {
+      height: 80px;
+      overflow: auto;
     }
   }
 </style>
