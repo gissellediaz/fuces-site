@@ -1,7 +1,8 @@
 import {
   ALLEVENTS,
   ADDEVENT,
-  CAROUSEL
+  CAROUSEL,
+  MOREEVENTS
 } from './mutation-types'
 
 import axios from '../../../services/axios'
@@ -42,6 +43,21 @@ export function getEventsInCarousel ({ commit }) {
     .then(response => {
       console.log(response.data)
       commit(CAROUSEL, response.data)
+      resolve(response.data)
+    })
+    .catch(error => {
+      console.log('error')
+      reject(error)
+    })
+  })
+}
+
+export function moreEvents ({ commit }, skip) {
+  return new Promise((resolve, reject) => {
+    axios.get('/events?skip=' + skip + '&limit=6')
+    .then(response => {
+      console.log(response.data)
+      commit(MOREEVENTS, response.data)
       resolve(response.data)
     })
     .catch(error => {
