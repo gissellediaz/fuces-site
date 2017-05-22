@@ -12,7 +12,8 @@ const initialState = {
   stateLogin: false,
   user: {
     name: 'Gisselle Diaz',
-    email: ''
+    email: '',
+    avatar: 'http://www.tum.ac.ke/assets/images/avatar.png'
   }
 }
 

@@ -9,12 +9,13 @@ import axios from '../../../services/axios'
 
 export function login ({ commit }, user) {
   return new Promise((resolve, reject) => {
-    axios.post('/auth/login', { email: user.email, password: user.password })
+    axios.post('/signin', user)
     .then(response => {
       console.log(response.data)
-      commit(LOGIN, response.data.auth.user)
-      localStorage.token = response.data.auth.token
-      resolve(response.data.auth.user)
+      commit(LOGIN, response.data.user)
+      localStorage.token = response.data.token
+      axios.defaults.headers.authorization = 'Bearer ' + response.data.token
+      resolve(response.data.user)
     })
     .catch(error => {
       console.log('error')

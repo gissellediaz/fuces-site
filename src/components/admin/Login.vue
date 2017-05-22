@@ -6,10 +6,10 @@
           <h1 class="text-center login-title">Bienvenido</h1>
           <div class="account-wall">
             <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">
-              <form class="form-signin">
-                <input type="text" class="form-control" placeholder="Email" required autofocus>
-                <input type="password" class="form-control" placeholder="Contraseña" required>
-                <button class="btn btn-md btn-primary btn-block" type="submit">Iniciar Sesión</button>
+              <form class="form-signin" v-on:submit.prevent="doLogin">
+                <input type="email" v-model="user.email" class="form-control" placeholder="Email" required autofocus>
+                <input type="password" v-model="user.password" class="form-control" placeholder="Contraseña" required>
+                <button id="btn-login" class="btn btn-md btn-primary btn-block" type="submit">Iniciar Sesión</button>
                 <label class="checkbox m-l-20">
                   <input type="checkbox" value="remember-me">Recuérdame
                 </label>
@@ -22,7 +22,33 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
+  data () {
+    return {
+      user: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    ...mapActions([
+      'login'
+    ]),
+    doLogin () {
+      window.$('#btn-login').button('loading')
+      this.login(this.user)
+      .then(() => {
+        this.$router.replace(this.$route.query.redirect || '/admin')
+        window.$('#btn-login').button('reset')
+      })
+      .catch(() => {
+        window.$('#btn-login').button('reset')
+      })
+    }
+  }
 }
 </script>
 
