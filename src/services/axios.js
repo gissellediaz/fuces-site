@@ -10,9 +10,14 @@
 //   }
 // })
 import axios from 'axios'
+var baseURL = 'http://api-fuces.bitgee.com/'
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:1337/'
+}
 
 export default axios.create({
-  baseURL: 'http://localhost:1337/',
+  baseURL: baseURL,
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',

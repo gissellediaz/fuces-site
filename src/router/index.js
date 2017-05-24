@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Courses from '@/components/site/Courses'
 import Course from '@/components/site/Course'
 import Events from '@/components/site/Events'
+import Event from '@/components/site/Event'
 import Home from '@/components/site/Home'
 import Login from '@/components/admin/Login'
 import LayoutAdmin from '@/components/admin/LayoutAdmin'
@@ -42,6 +43,11 @@ export default new Router({
           path: '/eventos',
           name: 'Events',
           component: Events
+        },
+        {
+          path: '/eventos/:slug',
+          name: 'Event',
+          component: Event
         },
         {
           path: '/nosotros',

@@ -20,7 +20,7 @@
           </div>
           <div class="form-group">
             <label for="subtitle">Description del evento</label>
-            <input v-model="event.subtitle" type="text" required class="form-control" id="subtitle" placeholder="">
+            <input v-model="event.subtitle" type="text" required class="form-control" id="subtitle" placeholder="" maxlength="350">
           </div>
           <div class="row">
             <div class="form-group col-md-4">
