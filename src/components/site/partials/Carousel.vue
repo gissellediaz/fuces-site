@@ -2,16 +2,16 @@
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <li data-target="#myCarousel" v-bind:class="[ index==0 ? 'active' : '']" v-bind:data-slide-to="index" v-for="(slide, index) in carousel"></li>
+      <li data-target="#myCarousel" v-bind:class="[ index==0 ? 'active' : '']" v-bind:data-slide-to="index" v-for="(slide, index) in dataInCarousel"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-      <div class="item img-background" v-bind:class="[ index==0 ? 'active' : '']"  v-bind:style="{backgroundImage: 'url('+slide.image+')'}" v-for="(slide, index) in carousel">
+      <div class="item img-background" v-bind:class="[ index==0 ? 'active' : '']"  v-bind:style="{backgroundImage: 'url('+slide.image+')'}" v-for="(slide, index) in dataInCarousel">
         <div class="img-layer">
           <div class="container">
             <div class="carousel-caption">
               <h1>{{ slide.title }}</h1>
               <p>{{ slide.subtitle }}</p>
-              <p><router-link class="btn btn-md btn-primary" v-bind:to="'eventos/'+slide.slug">Seguir leyendo</router-link></p>
+              <p v-if="index !== 0"><router-link class="btn btn-md btn-primary" v-bind:to="'eventos/'+slide.slug">Seguir leyendo</router-link></p>
             </div>
           </div>
         </div>
@@ -35,7 +35,10 @@ export default {
   computed: {
     ...mapGetters({
       carousel: 'getEventsInCarousel'
-    })
+    }),
+    dataInCarousel () {
+      return [...this.defaultData, ...this.carousel]
+    }
   },
   methods: {
     ...mapActions([
@@ -47,7 +50,14 @@ export default {
   },
   data () {
     return {
-
+      defaultData: [
+        {
+          title: 'Fundación Conciencia Ecosocial',
+          subtitle: 'Cumaná, estado Sucre',
+          slug: '',
+          image: 'http://www.publicdomainpictures.net/pictures/150000/velka/tropical-beach-1454007190ZAK.jpg'
+        }
+      ]
     }
   }
 }
