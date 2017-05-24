@@ -21,6 +21,8 @@ export default {
       let event = this.$store.getters.getEventBySlug(this.$route.params.slug)
       if (event) {
         return event
+      } else {
+        console.log('not found')
       }
     }
   }

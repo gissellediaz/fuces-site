@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="container m-b-md" v-if="!max">
-      <button id="btn-more" type="button" v-on:click="showMore" class="btn btn-primary btn-block">Mas cursos</button>
+      <button id="btn-more" type="button" v-on:click="showMore" class="btn btn-primary btn-block">Mas eventos</button>
     </div>
   </div>
 </template>
@@ -55,6 +55,9 @@ export default {
   },
   mounted () {
     this.getAllEvents()
+    if (this.events.length < 6) {
+      this.max = true
+    }
   },
   data () {
     return {

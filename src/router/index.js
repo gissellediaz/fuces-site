@@ -16,6 +16,17 @@ import Site from '@/components/site/Site'
 import AboutUs from '@/components/site/AboutUs'
 import Contact from '@/components/site/Contact'
 
+function requireAuth (to, from, next) {
+  if (!localStorage.token) {
+    next({
+      name: 'Login',
+      query: { redirect: to.fullPath }
+    })
+  } else {
+    next()
+  }
+}
+
 Vue.use(Router)
 
 export default new Router({
@@ -64,6 +75,7 @@ export default new Router({
     {
       path: '/admin',
       component: LayoutAdmin,
+      beforeEnter: requireAuth,
       children: [
         {
           path: '',
