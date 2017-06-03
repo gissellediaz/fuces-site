@@ -7,15 +7,21 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container" v-if="events.length !== 0">
       <div class="row events">
         <div class="col-sm-12 col-md-6" v-for="event in events">
           <card-event v-bind:event="event"></card-event>
         </div>
       </div>
+      <div class="m-b-md" v-if="!max">
+        <button id="btn-more" type="button" v-on:click="showMore" class="btn btn-primary btn-block">Mas eventos</button>
+      </div>
     </div>
-    <div class="container m-b-md" v-if="!max">
-      <button id="btn-more" type="button" v-on:click="showMore" class="btn btn-primary btn-block">Mas eventos</button>
+    <div class="container empty" v-if="events.length === 0" >
+
+        <i class="material-icons text-emty panel-icon">event_busy</i>
+        <h4 class="p-b-xl">No hay eventos</h4>
+
     </div>
   </div>
 </template>
@@ -100,6 +106,13 @@ export default {
     }
     .events-pagination {
       display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .empty {
+      min-height: 48vh;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }

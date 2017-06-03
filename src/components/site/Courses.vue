@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container" v-if="courses.length !== 0">
       <div class="row find-courses">
         <div class="col-md-6 col-sm-8 col-xs-10">
           <h4 class="text-center">Encuentra tu curso</h4>
@@ -23,9 +23,13 @@
           <card-course v-bind:course="course"></card-course>
         </div>
       </div>
+      <div class="m-b-md" v-if="!max">
+        <button id="btn-more" type="button" v-on:click="showMore" class="btn btn-primary btn-block">Mas cursos</button>
+      </div>
     </div>
-    <div class="container m-b-md" v-if="!max">
-      <button id="btn-more" type="button" v-on:click="showMore" class="btn btn-primary btn-block">Mas cursos</button>
+    <div class="container empty" v-if="courses.length === 0">
+      <i class="material-icons text-emty panel-icon">school</i>
+      <h4 class="p-b-xl">No hay cursos para inscripcion</h4>
     </div>
   </div>
 </template>
@@ -139,6 +143,13 @@ export default {
     }
     .courses-pagination {
       display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .empty {
+      min-height: 48vh;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
