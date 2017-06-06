@@ -5,12 +5,14 @@ import {
   ALLEVENTS,
   ADDEVENT,
   CAROUSEL,
-  MOREEVENTS
+  MOREEVENTS,
+  NEXTEVENTS
 } from './mutation-types'
 
 const initialState = {
   events: [],
-  carousel: []
+  carousel: [],
+  nextEvents: []
 }
 
 // mutations
@@ -29,6 +31,9 @@ const mutations = {
       ...state.events,
       ...events
     ]
+  },
+  [NEXTEVENTS] (state, nextEvents) {
+    state.nextEvents = nextEvents
   }
 }
 

@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   computed: {
     event () {
@@ -22,8 +24,23 @@ export default {
       if (event) {
         return event
       } else {
-        console.log('not found')
+        return this.getEvent(this.$route.params.slug)
       }
+    }
+  },
+  methods: {
+    ...mapActions([
+      'getEventBySlugApi'
+    ]),
+    getEvent (slug) {
+      this.getEventBySlugApi(slug)
+      .then(event => {
+        console.log(event)
+        return event
+      })
+      .catch(error => {
+        console.log(error)
+      })
     }
   }
   //

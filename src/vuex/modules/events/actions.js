@@ -2,9 +2,10 @@ import {
   ALLEVENTS,
   ADDEVENT,
   CAROUSEL,
-  MOREEVENTS
+  MOREEVENTS,
+  NEXTEVENTS
 } from './mutation-types'
-
+import moment from 'moment'
 import axios from '../../../services/axios'
 
 export function getAllEvents ({ commit }) {
@@ -59,6 +60,34 @@ export function moreEvents ({ commit }, skip) {
       console.log(response.data)
       commit(MOREEVENTS, response.data)
       resolve(response.data)
+    })
+    .catch(error => {
+      console.log('error')
+      reject(error)
+    })
+  })
+}
+
+export function getNextEvents ({ commit }) {
+  return new Promise((resolve, reject) => {
+    axios.get('/events?limit=6&sort=start_date%20ASC&where={"start_date":{">":"' + moment().format() + '"}}')
+    .then(response => {
+      commit(NEXTEVENTS, response.data)
+      resolve(response.data)
+    })
+    .catch(error => {
+      console.log('error')
+      reject(error)
+    })
+  })
+}
+
+export function getEventBySlugApi ({ commit }, slug) {
+  return new Promise((resolve, reject) => {
+    axios.get('events?where={"slug":"' + slug + '"}')
+    .then(response => {
+      commit(ADDEVENT, response.data[0])
+      resolve(response.data[0])
     })
     .catch(error => {
       console.log('error')

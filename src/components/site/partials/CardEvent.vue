@@ -8,6 +8,7 @@
       </div>
       <div class="">
         <hr>
+        <span><strong>{{formatDate(event.start_date)}}</strong></span>
         <router-link class="btn btn-primary pull-right" v-bind:to="'eventos/'+event.slug">Seguir leyendo</router-link>
       </div>
     </div>
@@ -15,17 +16,23 @@
 </template>
 
 <script>
-export default {
-  props: ['event'],
-  methods: {
-    shortText (text) {
-      if (text.length > 120) {
-        return text.substring(0, 120) + '...'
+  import moment from 'moment'
+
+  export default {
+    props: ['event'],
+    methods: {
+      shortText (text) {
+        if (text.length > 120) {
+          return text.substring(0, 120) + '...'
+        }
+        return text
+      },
+      formatDate (date) {
+        moment.locale('es')
+        return moment(date).fromNow()
       }
-      return text
     }
   }
-}
 </script>
 
 <style lang="scss">

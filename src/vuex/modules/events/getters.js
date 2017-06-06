@@ -9,3 +9,7 @@ export const getEventsInCarousel = state => {
 export const getEventBySlug = (state, getters) => (slug) => {
   return state.events.find(event => event.slug === slug)
 }
+
+export const getNextEvents = state => {
+  return state.nextEvents
+}
