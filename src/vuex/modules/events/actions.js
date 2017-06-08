@@ -3,7 +3,8 @@ import {
   ADDEVENT,
   CAROUSEL,
   MOREEVENTS,
-  NEXTEVENTS
+  NEXTEVENTS,
+  CHANGEEVENT
 } from './mutation-types'
 import moment from 'moment'
 import axios from '../../../services/axios'
@@ -88,6 +89,21 @@ export function getEventBySlugApi ({ commit }, slug) {
     .then(response => {
       commit(ADDEVENT, response.data[0])
       resolve(response.data[0])
+    })
+    .catch(error => {
+      console.log('error')
+      reject(error)
+    })
+  })
+}
+
+export function changeCarouselStatus ({ commit }, data) {
+  return new Promise((resolve, reject) => {
+    axios.put('events/' + data.event.id, {carousel: data.status})
+    .then(response => {
+      console.log(response.data)
+      commit(CHANGEEVENT, response.data)
+      resolve(response.data)
     })
     .catch(error => {
       console.log('error')

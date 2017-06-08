@@ -1,12 +1,14 @@
 import * as getters from './getters'
 import * as actions from './actions'
+import _ from 'lodash'
 
 import {
   ALLEVENTS,
   ADDEVENT,
   CAROUSEL,
   MOREEVENTS,
-  NEXTEVENTS
+  NEXTEVENTS,
+  CHANGEEVENT
 } from './mutation-types'
 
 const initialState = {
@@ -34,6 +36,10 @@ const mutations = {
   },
   [NEXTEVENTS] (state, nextEvents) {
     state.nextEvents = nextEvents
+  },
+  [CHANGEEVENT] (state, event) {
+    let index = _.findIndex(state.events, {id: event.id})
+    state.events.splice(index, 1, event)
   }
 }
 

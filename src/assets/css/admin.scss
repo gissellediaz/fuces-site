@@ -12,6 +12,10 @@
   width: 100%;
 }
 
+.navbar-static-top {
+  z-index: 0 !important;
+}
+
 .affix + .content-admin {
   padding-top: 70px;
 }

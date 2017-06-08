@@ -21,39 +21,7 @@
     </div>
     <div class="row" v-if="events.length !== 0">
       <div class="col-md-4" v-for="event in events">
-        <div class="panel panel-default animated fadeIn">
-          <div for="add-img" class="img-event w-lg" v-bind:style="{backgroundImage: 'url('+event.image+')'}">
-            <div class="img-event-layer flex-center w-lg">
-              <h4 class="text-emty w-70 text-center">{{ event.title }}</h4>
-            </div>
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item content-description">
-              <p><strong>Descripcion</strong></p>
-              <p class="m-b-0 text-justify">{{ shortText(event.subtitle) }}</p>
-            </li>
-            <li class="list-group-item">
-              En caurusel
-              <div class="material-switch pull-right">
-                <input v-bind:checked="event.carousel" v-bind:id="'carousel-check-' + event.id" name="someSwitchOption001" type="checkbox"/>
-                <label v-bind:for="'carousel-check-' + event.id" class="label-primary"></label>
-              </div>
-            </li>
-            <li class="list-group-item">
-              Inicio: <span class="pull-right">{{ event.start_date }}</span>
-            </li>
-            <li class="list-group-item">
-              Final: <span class="pull-right">{{ event.finish_date }}</span>
-            </li>
-            <li class="list-group-item">
-              <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                <router-link to='/admin/eventos' class="btn btn-sm btn-default">Ver</router-link>
-                <router-link to='/admin/eventos' class="btn btn-sm btn-default">Modificar</router-link>
-                <router-link to='/admin/eventos' class="btn btn-sm btn-default"><span class="text-danger">Eliminar</span></router-link>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <card-event-admin v-bind:event="event"></card-event-admin>
       </div>
     </div>
   </div>
@@ -61,11 +29,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import CardEvent from '@/components/site/partials/CardEvent'
+import CardEventAdmin from '@/components/admin/partials/CardEventAdmin'
 
 export default {
   components: {
-    CardEvent
+    CardEventAdmin
   },
   computed: {
     ...mapGetters({
