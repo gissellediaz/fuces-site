@@ -2,9 +2,9 @@
   <div class='container m-t-xl'>
     <div class="panel panel-default">
       <div class="panel-heading heading-navigation">
-        <router-link class="m-t-xs" to="/admin/eventos"><i class="material-icons p-t-sm">arrow_back</i></router-link><h4 class="m-t-xs m-b-xs m-l-md">Crear Evento</h4>
+        <router-link class="m-t-xs" to="/admin/eventos"><i class="material-icons p-t-sm">arrow_back</i></router-link><h4 class="m-t-xs m-b-xs m-l-md">Editar Evento</h4>
       </div>
-      <form v-on:submit.prevent="saveEvent">
+      <form v-on:submit.prevent="onUpdate">
         <input type="file" id="add-img" class="hidden" v-on:change="onFileChange">
         <label for="add-img" class="img-event pointer" v-bind:style="{backgroundImage: 'url('+event.image+')'}">
           <div class="img-event-layer flex-center">
@@ -25,11 +25,11 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label for="date">Fecha de inicio</label>
-              <input v-model="event.start_date" type="date" required class="form-control" id="" placeholder="">
+              <input v-bind:value="formatDate(event.start_date)" v-on:input="updateValue('start_date', $event)" type="date" required class="form-control" id="" placeholder="">
             </div>
             <div class="form-group col-md-4">
               <label for="date">Fecha del final</label>
-              <input v-model="event.finish_date" type="date" required class="form-control" id="" placeholder="">
+              <input v-bind:value="formatDate(event.finish_date)" v-on:input="updateValue('finish_date', $event)" type="date" required class="form-control" id="" placeholder="">
             </div>
             <div class="form-group col-md-4">
               <label for="">En carrusel</label>
@@ -43,7 +43,7 @@
             <label for="subtitle">Contenido del evento</label>
             <vue-editor v-model="event.description"></vue-editor>
           </div>
-          <button type='submit' id="btn-save" class='btn btn-md btn-primary'>Guardar evento</button>
+          <button type='submit' id="btn-save" class='btn btn-md btn-primary'>Actualizar evento</button>
         </div>
       </form>
     </div>
@@ -53,8 +53,14 @@
 <script>
 import { VueEditor } from 'vue2-editor'
 import { mapActions } from 'vuex'
+import moment from 'moment'
 
 export default {
+  beforeMount () {
+    if (this.$route.params.slug) {
+      this.event = JSON.parse(JSON.stringify(this.$store.getters.getEventBySlug(this.$route.params.slug)))
+    }
+  },
   components: {
     VueEditor
   },
@@ -62,7 +68,7 @@ export default {
     return {
       event: {
         image: '',
-        carousel: false,
+        carousel: '',
         title: '',
         subtitle: '',
         slug: '',
@@ -73,6 +79,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'updateEvent'
+    ]),
     onFileChange (e) {
       var files = e.target.files || e.dataTransfer.files
       if (!files.length) {
@@ -88,9 +97,12 @@ export default {
       }
       reader.readAsDataURL(file)
     },
-    saveEvent () {
+    updateValue (attribute, e) {
+      this.event[attribute] = e.target.value
+    },
+    onUpdate () {
       window.$('#btn-save').button('loading')
-      this.storeEvent(this.event)
+      this.updateEvent(this.event)
       .then(() => {
         window.$('#btn-save').button('reset')
         this.$router.replace('/admin/eventos')
@@ -105,9 +117,9 @@ export default {
       .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
       .replace(/^-+|-+$/g, '')
     },
-    ...mapActions([
-      'storeEvent'
-    ])
+    formatDate (date) {
+      return moment(date).format('YYYY-MM-DD')
+    }
   }
 }
 </script>

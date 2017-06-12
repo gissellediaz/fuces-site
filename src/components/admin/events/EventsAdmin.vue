@@ -20,9 +20,27 @@
       </ul>
     </div>
     <div class="row" v-if="events.length !== 0">
-      <div class="col-md-4" v-for="event in events">
-        <card-event-admin v-bind:event="event"></card-event-admin>
+      <div class="event-item col-md-4" v-for="event in events">
+        <card-event-admin v-bind:event="event" v-bind:select="selectEvent"></card-event-admin>
       </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade custom-modal" id="modal-eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Eliminar Evento</h4>
+          </div>
+          <div class="modal-body">
+            <h5>¿Esta seguro que desea eliminar este evento? [{{event_delete.id}}]</h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Aceptar</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
     </div>
   </div>
 </template>
@@ -42,6 +60,9 @@ export default {
   },
   data () {
     return {
+      event_delete: {
+        id: 'asdfasdf'
+      },
       search: '',
       loading: false
     }
@@ -53,6 +74,9 @@ export default {
     ...mapActions([
       'getAllEvents'
     ]),
+    selectEvent (e) {
+      this.event_delete = e
+    },
     shortText (text) {
       if (text.length > 90) {
         return text.substring(0, 90) + '...'

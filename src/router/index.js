@@ -12,6 +12,7 @@ import CoursesAdmin from '@/components/admin/courses/CoursesAdmin'
 import EventsAdmin from '@/components/admin/events/EventsAdmin'
 import Settings from '@/components/admin/settings/Settings'
 import NewEvent from '@/components/admin/events/NewEvent'
+import EditEvent from '@/components/admin/events/EditEvent'
 import Site from '@/components/site/Site'
 import AboutUs from '@/components/site/AboutUs'
 import Contact from '@/components/site/Contact'
@@ -96,6 +97,11 @@ export default new Router({
           path: 'eventos/crear-evento',
           name: 'NewEvent',
           component: NewEvent
+        },
+        {
+          path: 'eventos/:slug/editar',
+          name: 'EditEvent',
+          component: EditEvent
         },
         {
           path: 'configuracion',

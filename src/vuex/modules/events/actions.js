@@ -111,3 +111,19 @@ export function changeCarouselStatus ({ commit }, data) {
     })
   })
 }
+
+export function updateEvent ({ commit }, data) {
+  return new Promise((resolve, reject) => {
+    console.log('si vale')
+    axios.put('events/' + data.id, data)
+    .then(response => {
+      console.log(response.data)
+      commit(CHANGEEVENT, response.data)
+      resolve(response.data)
+    })
+    .catch(error => {
+      console.log('error')
+      reject(error)
+    })
+  })
+}
