@@ -18,10 +18,8 @@
       </div>
     </div>
     <div class="container empty" v-if="events.length === 0" >
-
-        <i class="material-icons text-emty panel-icon">event_busy</i>
-        <h4 class="p-b-xl">No hay eventos</h4>
-
+      <i class="material-icons text-emty panel-icon">event_busy</i>
+      <h4 class="p-b-xl">No hay eventos</h4>
     </div>
   </div>
 </template>

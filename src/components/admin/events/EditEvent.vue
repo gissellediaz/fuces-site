@@ -58,7 +58,12 @@ import moment from 'moment'
 export default {
   beforeMount () {
     if (this.$route.params.slug) {
-      this.event = JSON.parse(JSON.stringify(this.$store.getters.getEventBySlug(this.$route.params.slug)))
+      let foundEvent = this.$store.getters.getEventBySlug(this.$route.params.slug)
+      if (foundEvent) {
+        this.event = JSON.parse(JSON.stringify(foundEvent))
+      } else {
+        this.getEvent(this.$route.params.slug)
+      }
     }
   },
   components: {
@@ -80,7 +85,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'updateEvent'
+      'updateEvent',
+      'getEventBySlugApi'
     ]),
     onFileChange (e) {
       var files = e.target.files || e.dataTransfer.files
@@ -118,7 +124,16 @@ export default {
       .replace(/^-+|-+$/g, '')
     },
     formatDate (date) {
-      return moment(date).format('YYYY-MM-DD')
+      return moment(date, 'YYYY-MM-DD').format('YYYY-MM-DD')
+    },
+    getEvent (slug) {
+      this.getEventBySlugApi(slug)
+      .then(event => {
+        this.event = event
+      })
+      .catch(error => {
+        console.log(error)
+      })
     }
   }
 }

@@ -4,7 +4,8 @@ import {
   CAROUSEL,
   MOREEVENTS,
   NEXTEVENTS,
-  CHANGEEVENT
+  CHANGEEVENT,
+  DELETEEVENT
 } from './mutation-types'
 import moment from 'moment'
 import axios from '../../../services/axios'
@@ -114,11 +115,26 @@ export function changeCarouselStatus ({ commit }, data) {
 
 export function updateEvent ({ commit }, data) {
   return new Promise((resolve, reject) => {
-    console.log('si vale')
     axios.put('events/' + data.id, data)
     .then(response => {
       console.log(response.data)
       commit(CHANGEEVENT, response.data)
+      resolve(response.data)
+    })
+    .catch(error => {
+      console.log('error')
+      reject(error)
+    })
+  })
+}
+
+export function deleteEvent ({ commit }, data) {
+  return new Promise((resolve, reject) => {
+    axios.delete('events/' + data)
+    .then(response => {
+      console.log('delete')
+      console.log(response.data)
+      commit(DELETEEVENT, response.data)
       resolve(response.data)
     })
     .catch(error => {

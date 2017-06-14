@@ -8,7 +8,8 @@ import {
   CAROUSEL,
   MOREEVENTS,
   NEXTEVENTS,
-  CHANGEEVENT
+  CHANGEEVENT,
+  DELETEEVENT
 } from './mutation-types'
 
 const initialState = {
@@ -40,6 +41,10 @@ const mutations = {
   [CHANGEEVENT] (state, event) {
     let index = _.findIndex(state.events, {id: event.id})
     state.events.splice(index, 1, event)
+  },
+  [DELETEEVENT] (state, event) {
+    let index = _.findIndex(state.events, {id: event.id})
+    state.events.splice(index, 1)
   }
 }
 

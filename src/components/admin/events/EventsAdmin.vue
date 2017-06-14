@@ -24,6 +24,9 @@
         <card-event-admin v-bind:event="event" v-bind:select="selectEvent"></card-event-admin>
       </div>
     </div>
+    <div class="m-b-md" v-if="!max">
+      <button id="btn-more" type="button" v-on:click="showMore" class="btn btn-primary btn-block">Mas eventos</button>
+    </div>
     <!-- Modal -->
     <div class="modal fade custom-modal" id="modal-eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -33,11 +36,11 @@
             <h4 class="modal-title">Eliminar Evento</h4>
           </div>
           <div class="modal-body">
-            <h5>¿Esta seguro que desea eliminar este evento? [{{event_delete.id}}]</h5>
+            <h5>¿Esta seguro que desea eliminar este evento? {{event_delete.id}} </h5>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary">Aceptar</button>
+            <button type="button" id="btn-delete" v-on:click="doDeleteEvent(event_delete.id)"class="btn btn-primary">Aceptar</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -61,18 +64,27 @@ export default {
   data () {
     return {
       event_delete: {
-        id: 'asdfasdf'
+        id: ''
       },
       search: '',
-      loading: false
+      loading: false,
+      max: false
     }
   },
   mounted () {
     this.getAllEvents()
+    .then(() => {
+      console.log(this.events.length)
+      if (this.events.length < 6) {
+        this.max = true
+      }
+    })
   },
   methods: {
     ...mapActions([
-      'getAllEvents'
+      'getAllEvents',
+      'deleteEvent',
+      'moreEvents'
     ]),
     selectEvent (e) {
       this.event_delete = e
@@ -85,6 +97,32 @@ export default {
     },
     searchEvent () {
       console.log(this.search)
+    },
+    doDeleteEvent (eventId) {
+      window.$('#btn-delete').button('loading')
+      this.deleteEvent(eventId)
+      .then(() => {
+        window.$('#btn-delete').button('reset')
+        window.$('#modal-eliminar').modal('hide')
+      })
+      .catch(() => {
+        window.$('#btn-delete').button('reset')
+        window.$toastr.warning('No se pudo borrar el evento')
+      })
+    },
+    showMore () {
+      window.$('#btn-more').button('loading')
+      this.moreEvents(this.events.length)
+      .then(events => {
+        if (events.length === 0 || events.length < 6) {
+          this.max = true
+        }
+        window.$('#btn-more').button('reset')
+      })
+      .catch(error => {
+        window.$('#btn-more').button('reset')
+        console.log(error)
+      })
     }
   }
 }

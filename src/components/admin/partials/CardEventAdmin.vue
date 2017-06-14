@@ -26,12 +26,11 @@
       <li class="list-group-item">
         <div class="btn-group btn-group-justified" role="group">
           <router-link :to="'/eventos/'+event.slug" class="btn btn-sm btn-default">Ver</router-link>
-          <router-link :to="'/admin/eventos'+event.slug+'/edit'" class="btn btn-sm btn-default">Modificar</router-link>
+          <router-link :to="'/admin/eventos/'+event.slug+'/editar'" class="btn btn-sm btn-default">Modificar</router-link>
           <!-- Button trigger modal -->
           <a data-toggle="modal" data-target="#modal-eliminar" v-on:click="select(event)" class="btn btn-sm btn-default" >
             Eliminar
           </a>
-
         </div>
       </li>
     </ul>
@@ -56,7 +55,7 @@ export default {
     },
     formatDate (date) {
       moment.locale('es')
-      return moment(date).format('ddd, hA')
+      return moment(date, 'YYYY-MM-DD').format('ddd, DD-MM-YYYY')
     },
     changeStatus (event) {
       this.changeCarouselStatus({event: event, status: !event.carousel})
