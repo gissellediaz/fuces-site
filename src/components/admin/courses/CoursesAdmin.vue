@@ -89,19 +89,22 @@ export default {
     ]),
     searchCourse () {
       if (this.search !== '') {
-        this.loading = true
         this.max = true
-        this.findCourses(this.search)
-        .then(() => {
-          this.loading = false
-        })
-        .catch(() => {
-          this.loading = false
-        })
       } else {
-        this.max = false
-        this.getAllCourses()
+        if (this.courses.length < 6) {
+          this.max = false
+        } else {
+          this.max = true
+        }
       }
+      this.loading = true
+      this.findCourses(this.search)
+      .then(() => {
+        this.loading = false
+      })
+      .catch(() => {
+        this.loading = false
+      })
     },
     selectCourse (e) {
       this.course_delete = e

@@ -52,10 +52,7 @@ export default {
   computed: {
     ...mapGetters({
       courses: 'getAllCourses'
-    }),
-    course () {
-      return this.$store.getters.getCourseBySlug('abono-organico')
-    }
+    })
   },
   beforeMount () {
     this.getAllCourses()

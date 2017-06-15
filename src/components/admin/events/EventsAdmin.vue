@@ -98,19 +98,22 @@ export default {
     },
     searchEvent () {
       if (this.search !== '') {
-        this.loading = true
         this.max = true
-        this.findEvents(this.search)
-        .then(() => {
-          this.loading = false
-        })
-        .catch(() => {
-          this.loading = false
-        })
       } else {
-        this.max = false
-        this.getAllEvents()
+        if (this.courses.length < 6) {
+          this.max = false
+        } else {
+          this.max = true
+        }
       }
+      this.loading = true
+      this.findEvents(this.search)
+      .then(() => {
+        this.loading = false
+      })
+      .catch(() => {
+        this.loading = false
+      })
     },
     doDeleteEvent (eventId) {
       window.$('#btn-delete').button('loading')
