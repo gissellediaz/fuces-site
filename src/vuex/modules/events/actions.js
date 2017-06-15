@@ -143,3 +143,17 @@ export function deleteEvent ({ commit }, data) {
     })
   })
 }
+
+export function findEvents ({ commit }, text) {
+  return new Promise((resolve, reject) => {
+    axios.get('/events?where={"title":{"contains":"' + text + '"}}&limit=6')
+    .then(response => {
+      commit(ALLEVENTS, response.data)
+      resolve(response.data)
+    })
+    .catch(error => {
+      console.log('error')
+      reject(error)
+    })
+  })
+}

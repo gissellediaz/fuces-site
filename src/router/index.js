@@ -9,6 +9,7 @@ import Login from '@/components/admin/Login'
 import LayoutAdmin from '@/components/admin/LayoutAdmin'
 import Dashboard from '@/components/admin/Dashboard'
 import CoursesAdmin from '@/components/admin/courses/CoursesAdmin'
+import NewCourse from '@/components/admin/courses/NewCourse'
 import EventsAdmin from '@/components/admin/events/EventsAdmin'
 import Settings from '@/components/admin/settings/Settings'
 import NewEvent from '@/components/admin/events/NewEvent'
@@ -87,6 +88,11 @@ export default new Router({
           path: 'cursos',
           name: 'CoursesAdmin',
           component: CoursesAdmin
+        },
+        {
+          path: 'cursos/crear-curso',
+          name: 'NewCourse',
+          component: NewCourse
         },
         {
           path: 'eventos',

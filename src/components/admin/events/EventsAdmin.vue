@@ -5,11 +5,11 @@
         <h4 class="m-t-xs m-b-xs">Eventos</h4>
         <router-link class='btn btn-md btn-default' to="/admin/eventos/crear-evento">Crear Evento</router-link>
       </div>
-      <div v-if="events.length == 0" class="panel-body panel-admin flex-center">
+      <div v-if="(events.length == 0 && search == '')" class="panel-body panel-admin flex-center">
         <i class="material-icons text-emty panel-icon">event_busy</i>
         <h4 class="p-b-xl">No hay eventos</h4>
       </div>
-      <ul  v-else class="list-group">
+      <ul v-else class="list-group">
         <li class="list-group-item">
           <div class="form-group has-feedback m-b-0">
             <input v-model="search" v-on:keyup="searchEvent" placeholder="Buscar evento" type="text" class="form-control m-b-0 input-md b-r-0" aria-describedby="inputSuccess2Status">
@@ -84,7 +84,8 @@ export default {
     ...mapActions([
       'getAllEvents',
       'deleteEvent',
-      'moreEvents'
+      'moreEvents',
+      'findEvents'
     ]),
     selectEvent (e) {
       this.event_delete = e
@@ -96,7 +97,20 @@ export default {
       return text
     },
     searchEvent () {
-      console.log(this.search)
+      if (this.search !== '') {
+        this.loading = true
+        this.max = true
+        this.findEvents(this.search)
+        .then(() => {
+          this.loading = false
+        })
+        .catch(() => {
+          this.loading = false
+        })
+      } else {
+        this.max = false
+        this.getAllEvents()
+      }
     },
     doDeleteEvent (eventId) {
       window.$('#btn-delete').button('loading')
