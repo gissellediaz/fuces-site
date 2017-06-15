@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="container m-t-md">
-      <div class="raw-html" v-html="event.description"></div>
+      <div class="raw-html ql-container ql-editor" v-html="event.description"></div>
     </div>
   </div>
 </template>
@@ -72,7 +72,7 @@ export default {
     }
     .raw-html {
       img {
-        max-width: 1140px;
+        max-width: 1108px;
         height: auto;
       }
     }

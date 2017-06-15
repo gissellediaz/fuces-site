@@ -1,7 +1,9 @@
 import {
   ALLCOURSES,
   ADDCOURSES,
-  DELETECOURSE
+  DELETECOURSE,
+  ADDCOURSE,
+  CHANGECOURSE
 } from './mutation-types'
 
 import axios from '../../../services/axios'
@@ -71,6 +73,34 @@ export function deleteCourse ({ commit }, data) {
     axios.delete('courses/' + data)
     .then(response => {
       commit(DELETECOURSE, response.data)
+      resolve(response.data)
+    })
+    .catch(error => {
+      console.log('error')
+      reject(error)
+    })
+  })
+}
+
+export function getCourseBySlugApi ({ commit }, slug) {
+  return new Promise((resolve, reject) => {
+    axios.get('courses?where={"slug":"' + slug + '"}')
+    .then(response => {
+      commit(ADDCOURSE, response.data[0])
+      resolve(response.data[0])
+    })
+    .catch(error => {
+      console.log('error')
+      reject(error)
+    })
+  })
+}
+
+export function updateCourse ({ commit }, data) {
+  return new Promise((resolve, reject) => {
+    axios.put('courses/' + data.id, data)
+    .then(response => {
+      commit(CHANGECOURSE, response.data)
       resolve(response.data)
     })
     .catch(error => {

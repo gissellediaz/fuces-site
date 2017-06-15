@@ -5,7 +5,9 @@ import _ from 'lodash'
 import {
   ALLCOURSES,
   ADDCOURSES,
-  DELETECOURSE
+  DELETECOURSE,
+  ADDCOURSE,
+  CHANGECOURSE
 } from './mutation-types'
 
 const initialState = {
@@ -26,6 +28,13 @@ const mutations = {
   [DELETECOURSE] (state, course) {
     let index = _.findIndex(state.courses, {id: event.id})
     state.courses.splice(index, 1)
+  },
+  [ADDCOURSE] (state, course) {
+    state.courses.push(course)
+  },
+  [CHANGECOURSE] (state, course) {
+    let index = _.findIndex(state.courses, {id: course.id})
+    state.courses.splice(index, 1, course)
   }
 }
 
