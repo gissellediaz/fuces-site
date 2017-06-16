@@ -57,7 +57,7 @@ export default {
       })
     }
   },
-  mounted () {
+  beforeMount () {
     this.getAllEvents()
     if (this.events.length < 6) {
       this.max = true

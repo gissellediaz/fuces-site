@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="thumbnail card">
+  <div class="thumbnail card animated fadeInUp">
     <div class="img-card" v-bind:style="{backgroundImage: 'url('+event.image+')'}"></div>
     <div class="caption card-content">
       <div class="">

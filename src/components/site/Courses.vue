@@ -56,6 +56,9 @@ export default {
   },
   beforeMount () {
     this.getAllCourses()
+    if (this.courses.length < 6) {
+      this.max = true
+    }
   },
   methods: {
     ...mapActions([

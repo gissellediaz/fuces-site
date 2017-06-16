@@ -14,7 +14,6 @@ export function getAllEvents ({ commit }) {
   return new Promise((resolve, reject) => {
     axios.get('/events?limit=6')
     .then(response => {
-      console.log(response.data)
       commit(ALLEVENTS, response.data)
       resolve(response.data)
     })
@@ -29,7 +28,6 @@ export function storeEvent ({ commit }, NewEvent) {
   return new Promise((resolve, reject) => {
     axios.post('/events', NewEvent)
     .then(response => {
-      console.log(response.data)
       commit(ADDEVENT, response.data)
       resolve(response.data)
     })
@@ -44,7 +42,6 @@ export function getEventsInCarousel ({ commit }) {
   return new Promise((resolve, reject) => {
     axios.get('/events?where={"carousel": true}')
     .then(response => {
-      console.log(response.data)
       commit(CAROUSEL, response.data)
       resolve(response.data)
     })
@@ -59,7 +56,6 @@ export function moreEvents ({ commit }, skip) {
   return new Promise((resolve, reject) => {
     axios.get('/events?skip=' + skip + '&limit=6')
     .then(response => {
-      console.log(response.data)
       commit(MOREEVENTS, response.data)
       resolve(response.data)
     })
@@ -102,7 +98,6 @@ export function changeCarouselStatus ({ commit }, data) {
   return new Promise((resolve, reject) => {
     axios.put('events/' + data.event.id, {carousel: data.status})
     .then(response => {
-      console.log(response.data)
       commit(CHANGEEVENT, response.data)
       resolve(response.data)
     })
@@ -117,7 +112,6 @@ export function updateEvent ({ commit }, data) {
   return new Promise((resolve, reject) => {
     axios.put('events/' + data.id, data)
     .then(response => {
-      console.log(response.data)
       commit(CHANGEEVENT, response.data)
       resolve(response.data)
     })
@@ -132,8 +126,6 @@ export function deleteEvent ({ commit }, data) {
   return new Promise((resolve, reject) => {
     axios.delete('events/' + data)
     .then(response => {
-      console.log('delete')
-      console.log(response.data)
       commit(DELETEEVENT, response.data)
       resolve(response.data)
     })
