@@ -49,8 +49,8 @@
             <h4 class="text-primary m-t-0 m-b-0">Mensajes Recibidos</h4>
           </div>
           <div class="panel-body flex-center">
-            <i class="material-icons text-emty panel-icon">sms_failed</i>
-            <h4 class="p-b-xl">No hay alumnos inscritos</h4>
+            <i class="material-icons text-emty panel-icon">sms</i>
+            <h4 class="p-b-xl">No hay mensajes</h4>
           </div>
           <ul class="list-group">
             <li class="list-group-item"><router-link to="/admin/mensajes"><h4 class="text-center text-primary m-b-0 m-t-0">Ir a Mensajes</h4></router-link></li>

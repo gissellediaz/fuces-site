@@ -15,6 +15,7 @@ import EventsAdmin from '@/components/admin/events/EventsAdmin'
 import Settings from '@/components/admin/settings/Settings'
 import NewEvent from '@/components/admin/events/NewEvent'
 import EditEvent from '@/components/admin/events/EditEvent'
+import Messages from '@/components/admin/messages/Messages'
 import Site from '@/components/site/Site'
 import AboutUs from '@/components/site/AboutUs'
 import Contact from '@/components/site/Contact'
@@ -119,6 +120,11 @@ export default new Router({
           path: 'configuracion',
           name: 'Settings',
           component: Settings
+        },
+        {
+          path: 'mensajes',
+          name: 'Messages',
+          component: Messages
         }
       ]
     },
