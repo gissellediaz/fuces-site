@@ -4,7 +4,7 @@
     <div class="container animated fadeInUp">
       <div class="row">
         <div class="col-md-12 col-sm-12">
-          <h3>Proximos Eventos</h3>
+          <h3>Próximos Eventos</h3>
           <hr>
         </div>
         <div class="col-md-8">

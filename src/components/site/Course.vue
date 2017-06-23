@@ -13,7 +13,7 @@
         <div class="container-flex space-between">
           <div class="container-flex">
             <div class="box">
-              <span class="title m-b-0">Titulo</span>
+              <span class="title m-b-0">Título</span>
               <span class="content m-t-0">{{course.title}}</span>
             </div>
             <div class="box m-l-lg">
@@ -25,7 +25,7 @@
               <span class="content m-t-0">{{course.hours}}</span>
             </div>
           </div>
-          <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Inscribirse</button>
+          <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Solicitud</button>
         </div>
       </div>
     </div>
@@ -38,26 +38,58 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Formulario de Inscripcion</h4>
+            <h4 class="modal-title" id="myModalLabel">Formulario de Inscripción</h4>
           </div>
           <form v-on:submit.prevent="onSave">
             <div class="modal-body">
               <div class="form-group">
-                <label for="name">Nombres:</label>
+                <label for="name">Nombre y Apellido:</label>
                 <input v-model="form.name" type="text" class="form-control" id="name">
               </div>
               <div class="form-group">
-                <label for="email">Correo Electronico:</label>
+                <label for="email">Correo Electrónico:</label>
                 <input v-model="form.email" type="email" class="form-control" id="email">
               </div>
               <div class="form-group">
-                <label for="phone">Telefono:</label>
+                <label for="phone">Teléfono:</label>
+                <input v-model="form.phone" type="text" class="form-control" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="phone">País:</label>
+                <input v-model="form.phone" type="text" class="form-control" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="phone">Estado:</label>
+                <input v-model="form.phone" type="text" class="form-control" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="phone">Ciudad:</label>
+                <input v-model="form.phone" type="text" class="form-control" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="phone">Municipio:</label>
+                <input v-model="form.phone" type="text" class="form-control" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="phone">Parroquia:</label>
+                <input v-model="form.phone" type="text" class="form-control" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="phone">Dirección:</label>
+                <input v-model="form.phone" type="text" class="form-control" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="phone">Institución/Comunidad:</label>
+                <input v-model="form.phone" type="text" class="form-control" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="phone">Responsable de la Institución/Comunidad:</label>
                 <input v-model="form.phone" type="text" class="form-control" id="phone">
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-              <button type="submit" id="btn-save" class="btn btn-primary">Inscribirse</button>
+              <button type="submit" id="btn-save" class="btn btn-primary">Solicitar</button>
             </div>
           </form>
         </div>
