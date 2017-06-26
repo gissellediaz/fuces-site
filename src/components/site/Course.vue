@@ -56,35 +56,35 @@
               </div>
               <div class="form-group">
                 <label for="phone">País:</label>
-                <input v-model="form.phone" type="text" class="form-control" id="phone">
+                <input v-model="form.country" type="text" class="form-control" id="country">
               </div>
               <div class="form-group">
                 <label for="phone">Estado:</label>
-                <input v-model="form.phone" type="text" class="form-control" id="phone">
+                <input v-model="form.state" type="text" class="form-control" id="state">
               </div>
               <div class="form-group">
                 <label for="phone">Ciudad:</label>
-                <input v-model="form.phone" type="text" class="form-control" id="phone">
+                <input v-model="form.city" type="text" class="form-control" id="city">
               </div>
               <div class="form-group">
                 <label for="phone">Municipio:</label>
-                <input v-model="form.phone" type="text" class="form-control" id="phone">
+                <input v-model="form.municipality" type="text" class="form-control" id="municipality">
               </div>
               <div class="form-group">
                 <label for="phone">Parroquia:</label>
-                <input v-model="form.phone" type="text" class="form-control" id="phone">
+                <input v-model="form.parish" type="text" class="form-control" id="parish">
               </div>
               <div class="form-group">
                 <label for="phone">Dirección:</label>
-                <input v-model="form.phone" type="text" class="form-control" id="phone">
+                <input v-model="form.address" type="text" class="form-control" id="address">
               </div>
               <div class="form-group">
                 <label for="phone">Institución/Comunidad:</label>
-                <input v-model="form.phone" type="text" class="form-control" id="phone">
+                <input v-model="form.community" type="text" class="form-control" id="community">
               </div>
               <div class="form-group">
                 <label for="phone">Responsable de la Institución/Comunidad:</label>
-                <input v-model="form.phone" type="text" class="form-control" id="phone">
+                <input v-model="form.community_responsable" type="text" class="form-control" id="community_responsable">
               </div>
             </div>
             <div class="modal-footer">
@@ -117,7 +117,15 @@ export default {
       form: {
         name: '',
         email: '',
-        phone: ''
+        phone: '',
+        country: '',
+        state: '',
+        city: '',
+        municipality: '',
+        parish: '',
+        address: '',
+        community: '',
+        community_responsable: ''
       }
     }
   },
@@ -140,7 +148,7 @@ export default {
       window.$('#btn-save').button('loading')
       window.$('#btn-save').button('reset')
       window.$('#myModal').modal('hide')
-      window.$toast.success('Nos pondremos en contacto contigo', 'Inscripción exitosa!')
+      window.$toast.success('Nos pondremos en contacto contigo', 'Solicitud exitosa!')
     }
   }
 }
