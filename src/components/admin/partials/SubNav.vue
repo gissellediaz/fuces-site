@@ -28,6 +28,11 @@
               <i class="material-icons icon-subnav">school</i>Cursos
             </router-link>
           </li>
+          <li v-bind:class="{ 'active': $route.fullPath === '/admin/periodos' }" >
+            <router-link to="/admin/periodos">
+              <i class="material-icons icon-subnav">today</i>Periodos
+            </router-link>
+          </li>
           <li v-bind:class="{ 'active': $route.fullPath === '/admin/mensajes' }" >
             <router-link to="/admin/mensajes">
               <i class="material-icons icon-subnav">message</i>Mensajes

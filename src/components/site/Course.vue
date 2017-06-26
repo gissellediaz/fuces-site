@@ -25,7 +25,7 @@
               <span class="content m-t-0">{{course.hours}}</span>
             </div>
           </div>
-          <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Solicitud</button>
+          <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Solicitar</button>
         </div>
       </div>
     </div>

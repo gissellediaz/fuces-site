@@ -5,6 +5,7 @@
         <div class="container text-center">
           <h2>{{event.title}}</h2>
           <h4 class="m-t-md">{{event.subtitle}}</h4>
+          <p>{{formatDate(event.start_date)}} - {{formatDate(event.finish_date)}}</p>
         </div>
       </div>
     </div>
@@ -16,6 +17,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import moment from 'moment'
 
 export default {
   computed: {
@@ -41,6 +43,9 @@ export default {
       .catch(error => {
         console.log(error)
       })
+    },
+    formatDate (date) {
+      return moment(date, 'YYYY-MM-DD').format('DD/MM/YYYY')
     }
   }
   //

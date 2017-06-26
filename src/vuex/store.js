@@ -4,6 +4,7 @@ import auth from './modules/auth'
 import events from './modules/events'
 import courses from './modules/courses'
 import messages from './modules/messages'
+import periods from './modules/periods'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
     auth,
     courses,
     events,
-    messages
+    messages,
+    periods
   },
   strict: debug
 })

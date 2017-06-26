@@ -16,11 +16,11 @@
         <div class="panel-body">
           <div class="form-group">
             <label for="title">Titulo del evento</label>
-            <input v-model="event.title" v-on:change="slug(event.title)" type="text" required class="form-control" id="title" placeholder="">
+            <input v-model="event.title" v-on:change="slug(event.title)" type="text" required class="form-control" id="title" maxlength="140">
           </div>
           <div class="form-group">
             <label for="subtitle">Description del evento</label>
-            <input v-model="event.subtitle" type="text" required class="form-control" id="subtitle" placeholder="" maxlength="350">
+            <input v-model="event.subtitle" type="text" required class="form-control" id="subtitle" placeholder="" maxlength="140">
           </div>
           <div class="row">
             <div class="form-group col-md-4">
@@ -42,6 +42,7 @@
           <div class="form-group">
             <label for="subtitle">Contenido del evento</label>
             <vue-editor v-model="event.description"></vue-editor>
+            <span class="limiter">{{charactersLeft}}</span>
           </div>
           <button type='submit' id="btn-save" class='btn btn-md btn-primary'>Actualizar evento</button>
         </div>
@@ -68,6 +69,13 @@ export default {
   },
   components: {
     VueEditor
+  },
+  computed: {
+    charactersLeft () {
+      let chars = this.event.description.length
+      let limit = 6000000
+      return (limit - chars) + ' / ' + limit
+    }
   },
   data () {
     return {
@@ -107,15 +115,19 @@ export default {
       this.event[attribute] = e.target.value
     },
     onUpdate () {
-      window.$('#btn-save').button('loading')
-      this.updateEvent(this.event)
-      .then(() => {
-        window.$('#btn-save').button('reset')
-        this.$router.replace('/admin/eventos')
-      })
-      .catch(() => {
-        window.$('#btn-save').button('reset')
-      })
+      if (this.event.image === '') {
+        window.$toast.warning('Debe agregar una imagen al evento', 'Imagen requerida')
+      } else {
+        window.$('#btn-save').button('loading')
+        this.updateEvent(this.event)
+        .then(() => {
+          window.$('#btn-save').button('reset')
+          this.$router.replace('/admin/eventos')
+        })
+        .catch(() => {
+          window.$('#btn-save').button('reset')
+        })
+      }
     },
     slug (text) {
       this.event.slug = text.toLowerCase()

@@ -4,7 +4,7 @@
       <div class="panel-heading heading-navigation">
         <router-link class="m-t-xs" to="/admin/eventos"><i class="material-icons p-t-sm">arrow_back</i></router-link><h4 class="m-t-xs m-b-xs m-l-md">Crear Evento</h4>
       </div>
-      <form v-on:submit.prevent="saveEvent">
+      <form id="event-form" v-on:submit.prevent="saveEvent">
         <input type="file" id="add-img" class="hidden" v-on:change="onFileChange">
         <label for="add-img" class="img-event pointer" v-bind:style="{backgroundImage: 'url('+event.image+')'}">
           <div class="img-event-layer flex-center">
@@ -16,20 +16,20 @@
         <div class="panel-body">
           <div class="form-group">
             <label for="title">Titulo del evento</label>
-            <input v-model="event.title" v-on:change="slug(event.title)" type="text" required class="form-control" id="title" placeholder="">
+            <input v-model="event.title" v-on:change="slug(event.title)" type="text" required class="form-control" id="title" maxlength="140">
           </div>
           <div class="form-group">
             <label for="subtitle">Description del evento</label>
-            <input v-model="event.subtitle" type="text" required class="form-control" id="subtitle" placeholder="" maxlength="350">
+            <input v-model="event.subtitle" type="text" required class="form-control" id="subtitle" maxlength="140">
           </div>
           <div class="row">
             <div class="form-group col-md-4">
               <label for="date">Fecha de inicio</label>
-              <input v-model="event.start_date" type="date" required class="form-control" id="" placeholder="">
+              <input v-model="event.start_date" type="date" required class="form-control" id="start_date">
             </div>
             <div class="form-group col-md-4">
               <label for="date">Fecha del final</label>
-              <input v-model="event.finish_date" type="date" required class="form-control" id="" placeholder="">
+              <input v-model="event.finish_date" type="date" required class="form-control" id="finish_date">
             </div>
             <div class="form-group col-md-4">
               <label for="">En carrusel</label>
@@ -42,8 +42,9 @@
           <div class="form-group">
             <label for="subtitle">Contenido del evento</label>
             <vue-editor v-model="event.description"></vue-editor>
+            <span class="limiter">{{charactersLeft}}</span>
           </div>
-          <button type='submit' id="btn-save" class='btn btn-md btn-primary'>Guardar evento</button>
+          <button type='submit' v-bind:disabled="validForm" id="btn-save" class='btn btn-md btn-primary'>Guardar evento</button>
         </div>
       </form>
     </div>
@@ -57,6 +58,22 @@ import { mapActions } from 'vuex'
 export default {
   components: {
     VueEditor
+  },
+  computed: {
+    charactersLeft () {
+      let chars = this.event.description.length
+      let limit = 6000000
+      return (limit - chars) + ' / ' + limit
+    },
+    validForm () {
+      if ((this.event.image !== '') &&
+        (this.title !== '') &&
+        ((this.event.description.length <= 6000000) && (this.event.description.length > 0))) {
+        return false
+      } else {
+        return true
+      }
+    }
   },
   data () {
     return {
@@ -89,15 +106,19 @@ export default {
       reader.readAsDataURL(file)
     },
     saveEvent () {
-      window.$('#btn-save').button('loading')
-      this.storeEvent(this.event)
-      .then(() => {
-        window.$('#btn-save').button('reset')
-        this.$router.replace('/admin/eventos')
-      })
-      .catch(() => {
-        window.$('#btn-save').button('reset')
-      })
+      if (this.event.image === '') {
+        window.$toast.warning('Debe agregar una imagen al evento', 'Imagen requerida')
+      } else {
+        window.$('#btn-save').button('loading')
+        this.storeEvent(this.event)
+        .then(() => {
+          window.$('#btn-save').button('reset')
+          this.$router.replace('/admin/eventos')
+        })
+        .catch(() => {
+          window.$('#btn-save').button('reset')
+        })
+      }
     },
     slug (text) {
       this.event.slug = text.toLowerCase()
@@ -134,5 +155,8 @@ export default {
   }
   .pointer {
     cursor: pointer;
+  }
+  .limiter {
+    font-size: 0.8em;
   }
 </style>
