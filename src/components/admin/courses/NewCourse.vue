@@ -29,7 +29,7 @@
             </div>
             <div class="form-group col-md-2">
               <label for="hours">Cantidad de Horas</label>
-              <input v-model="course.hours" type="number" required class="form-control" id="hours" placeholder="">
+              <input v-model="course.hours" type="number" min="1" required class="form-control" id="hours" placeholder="">
             </div>
           </div>
           <div class="form-group">
