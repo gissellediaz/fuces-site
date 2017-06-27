@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav">
           <li v-bind:class="{ 'active': $route.fullPath === '/admin' }" >
             <router-link to="/admin">
-              <i class="material-icons icon-subnav">dashboard</i>Dashboard
+              <i class="material-icons icon-subnav">dashboard</i>Resumen
             </router-link>
           </li>
           <li v-bind:class="{ 'active': $route.fullPath === '/admin/eventos' }" >
