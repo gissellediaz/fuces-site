@@ -51,18 +51,20 @@ export default {
   },
   computed: {
     ...mapGetters({
-      courses: 'getAllCourses'
+      courses: 'getAllPeriods'
     })
   },
   beforeMount () {
-    this.getAllCourses()
-    if (this.courses.length < 6) {
-      this.max = true
-    }
+    this.getAllPeriods()
+    .then(() => {
+      if (this.courses.length < 6) {
+        this.max = true
+      }
+    })
   },
   methods: {
     ...mapActions([
-      'getAllCourses',
+      'getAllPeriods',
       'findCourses',
       'moreCourses'
     ]),

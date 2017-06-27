@@ -105,7 +105,3 @@ export function updateCourse ({ commit }, data) {
     })
   })
 }
-
-export function saveInscription ({ commit }, data) {
-  return 'si'
-}

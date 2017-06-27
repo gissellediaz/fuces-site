@@ -80,11 +80,11 @@
               </div>
               <div class="form-group">
                 <label for="phone">Institución/Comunidad:</label>
-                <input v-model="form.community" type="text" class="form-control" id="community">
+                <input v-model="form.organization" type="text" class="form-control" id="community">
               </div>
               <div class="form-group">
                 <label for="phone">Responsable de la Institución/Comunidad:</label>
-                <input v-model="form.community_responsable" type="text" class="form-control" id="community_responsable">
+                <input v-model="form.leader_organization" type="text" class="form-control" id="community_responsable">
               </div>
             </div>
             <div class="modal-footer">
@@ -103,13 +103,19 @@ import { mapActions } from 'vuex'
 
 export default {
   computed: {
-    course () {
-      let courses = this.$store.getters.getCourseBySlug(this.$route.params.slug)
+    period () {
+      let courses = this.$store.getters.getPeriodId(parseInt(this.$route.params.slug))
       if (courses) {
         return courses
       } else {
-        return this.getCourse(this.$route.params.slug)
+        return courses
       }
+    },
+    course () {
+      if (this.period) {
+        return this.period.course
+      }
+      return null
     }
   },
   data () {
@@ -121,18 +127,19 @@ export default {
         country: '',
         state: '',
         city: '',
-        municipality: '',
         parish: '',
         address: '',
-        community: '',
-        community_responsable: ''
+        organization: '',
+        leader_organization: '',
+        period: ''
       }
     }
   },
   methods: {
     ...mapActions([
-      'getCourseBySlugApi',
-      'saveInscription'
+      'getAllPeriods',
+      'saveInscription',
+      'storeStudent'
     ]),
     getCourse (slug) {
       this.getCourseBySlugApi(slug)
@@ -145,10 +152,19 @@ export default {
       })
     },
     onSave () {
+      this.form.period = this.period.id
       window.$('#btn-save').button('loading')
-      window.$('#btn-save').button('reset')
-      window.$('#myModal').modal('hide')
-      window.$toast.success('Nos pondremos en contacto contigo', 'Solicitud exitosa!')
+      this.storeStudent(this.form)
+      .then(() => {
+        window.$('#btn-save').button('reset')
+        window.$('#myModal').modal('hide')
+        window.$toast.success('Nos pondremos en contacto contigo', 'Solicitud exitosa!')
+      })
+      .catch(() => {
+        window.$('#btn-save').button('reset')
+        window.$('#myModal').modal('hide')
+        window.$toast.error('Nos pondremos en contacto contigo', 'Solicitud exitosa!')
+      })
     }
   }
 }

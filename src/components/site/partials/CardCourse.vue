@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="thumbnail card animated fadeInUp">
-    <div class="img-card" v-bind:style="{backgroundImage: 'url('+course.image+')'}"></div>
+    <div class="img-card" v-bind:style="{backgroundImage: 'url('+course.course.image+')'}"></div>
     <div class="caption card-content">
-      <h5><strong>{{course.title}}</strong></h5>
-      <p class="content-courses text-justify">{{shortText(course.subtitle)}}</p>
-      <span><strong>Horas:</strong> {{course.hours}}</span>
+      <h5><strong>{{course.course.title}}</strong></h5>
+      <p class="content-courses text-justify">{{shortText(course.course.subtitle)}}</p>
+      <span><strong>Horas:</strong> {{course.course.hours}}</span>
       <br>
-      <span><strong>Instructor:</strong> {{course.instructor}}</span>
+      <span><strong>Instructor:</strong> {{course.course.instructor}}</span>
       <hr>
-      <router-link class="btn btn-primary pull-right" v-bind:to="'cursos/'+course.slug">Seguir leyendo</router-link>
+      <router-link class="btn btn-primary pull-right" v-bind:to="'cursos/'+course.id">Seguir leyendo</router-link>
     </div>
   </div>
 </template>

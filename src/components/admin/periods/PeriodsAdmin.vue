@@ -55,9 +55,41 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">Estudiantes inscriptos</h4>
           </div>
-          <div class="modal-body">
-            <h5>¿Esta seguro que desea eliminar este curso?</h5>
+          <div class="modal-body table-responsive">
+            <table class='table table-striped table-bordered table-hover table-condensed'>
+              <thead>
+                <tr>
+                  <th>Nombre y apellido</th>
+                  <th>Correo electronico</th>
+                  <th>Telefono</th>
+                  <th>Pais</th>
+                  <th>Estado</th>
+                  <th>Ciudad</th>
+                  <th>Municipio</th>
+                  <th>Parroquia</th>
+                  <th>Direccion</th>
+                  <th>Organizacion</th>
+                  <th>Responsable</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="student in period_delete.students">
+                  <td>{{ student.name }}</td>
+                  <td>{{ student.email }}</td>
+                  <td>{{ student.phone }}</td>
+                  <td>{{ student.country }}</td>
+                  <td>{{ student.state }}</td>
+                  <td>{{ student.city }}</td>
+                  <td>{{ student.email }}</td>
+                  <td>{{ student.parish }}</td>
+                  <td>{{ student.address }}</td>
+                  <td>{{ student.organization }}</td>
+                  <td>{{ student.leader_organization }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             <button type="button" id="btn-delete" v-on:click="doDeleteCourse(course_delete.id)"class="btn btn-primary">Aceptar</button>
