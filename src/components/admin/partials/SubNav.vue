@@ -13,11 +13,11 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav">
-          <li v-bind:class="{ 'active': $route.fullPath === '/admin' }" >
+          <!-- <li v-bind:class="{ 'active': $route.fullPath === '/admin' }" >
             <router-link to="/admin">
               <i class="material-icons icon-subnav">dashboard</i>Resumen
             </router-link>
-          </li>
+          </li> -->
           <li v-bind:class="{ 'active': $route.fullPath === '/admin/eventos' }" >
             <router-link to="/admin/eventos">
               <i class="material-icons icon-subnav">date_range</i>Eventos
@@ -38,11 +38,11 @@
               <i class="material-icons icon-subnav">message</i>Mensajes
             </router-link>
           </li>
-          <li v-bind:class="{ 'active': $route.fullPath === '/admin/configuracion' }" >
+          <!-- <li v-bind:class="{ 'active': $route.fullPath === '/admin/configuracion' }" >
             <router-link to="/admin/configuracion">
               <i class="material-icons icon-subnav">settings</i>Configuracion
             </router-link>
-          </li>
+          </li> -->
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

@@ -35,6 +35,7 @@
           <div class="form-group">
             <label for="subtitle">Contenido del curso</label>
             <vue-editor v-model="course.description"></vue-editor>
+            <span class="limiter">{{charactersLeft}}</span>
           </div>
           <button type='submit' id="btn-save" class='btn btn-md btn-primary'>Actualizar curso</button>
         </div>
@@ -60,6 +61,13 @@ export default {
   },
   components: {
     VueEditor
+  },
+  computed: {
+    charactersLeft () {
+      let chars = this.course.description.length
+      let limit = 6000000
+      return (limit - chars) + ' / ' + limit
+    }
   },
   data () {
     return {

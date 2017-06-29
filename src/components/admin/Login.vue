@@ -41,7 +41,7 @@ export default {
       window.$('#btn-login').button('loading')
       this.login(this.user)
       .then(() => {
-        this.$router.replace(this.$route.query.redirect || '/admin')
+        this.$router.replace(this.$route.query.redirect || '/admin/eventos')
         window.$('#btn-login').button('reset')
       })
       .catch(() => {

@@ -7,7 +7,7 @@ import Event from '@/components/site/Event'
 import Home from '@/components/site/Home'
 import Login from '@/components/admin/Login'
 import LayoutAdmin from '@/components/admin/LayoutAdmin'
-import Dashboard from '@/components/admin/Dashboard'
+// import Dashboard from '@/components/admin/Dashboard'
 import CoursesAdmin from '@/components/admin/courses/CoursesAdmin'
 import PeriodsAdmin from '@/components/admin/periods/PeriodsAdmin'
 import NewCourse from '@/components/admin/courses/NewCourse'
@@ -83,11 +83,11 @@ export default new Router({
       component: LayoutAdmin,
       beforeEnter: requireAuth,
       children: [
-        {
-          path: '',
-          name: 'Dashboard',
-          component: Dashboard
-        },
+        // {
+        //   path: '',
+        //   name: 'Dashboard',
+        //   component: Dashboard
+        // },
         {
           path: 'cursos',
           name: 'CoursesAdmin',
